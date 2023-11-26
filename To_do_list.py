@@ -1,4 +1,4 @@
-import tkinter
+﻿import tkinter
 import tkinter.messagebox
 
 root = tkinter.Tk()
@@ -33,6 +33,22 @@ def edit_tasks():
     except:
         tkinter.messagebox.showinfo("warning!", "please select  the task to edit")
 
+def load_task():
+    try:
+        with open("test.txt", "r") as file:
+            tasks = file.readlines()
+
+        # Remove newline characters from each task and display in listbox
+        listbox_tasks.delete(0, tkinter.END)
+        for task in tasks:
+            task = task.strip()
+            listbox_tasks.insert(tkinter.END, task)
+
+    except FileNotFoundError:
+        tkinter.messagebox.showinfo("Warning", "No tasks found in the file.")
+    except Exception as e:
+        tkinter.messagebox.showinfo("Error", f"An error occurred: {str(e)}")
+
 def exit_root():
     exit_root = tkinter.messagebox.askyesno("Exit", "Do you want to exit ?")
     if exit_root > 0:
@@ -60,6 +76,9 @@ button_delete_tasks.pack()
 
 button_edit_tasks = tkinter.Button(root, text="Edit task", width=78, command=lambda:edit_tasks())
 button_edit_tasks.pack()
+
+button_load_task = tkinter.Button(root, text="Load task", width=48, command=lambda: load_task())
+button_load_task.pack()
 
 button_exit_root = tkinter.Button(root, text="Exit root", width=78, command=lambda:exit_root())
 button_exit_root.pack()
