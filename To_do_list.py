@@ -77,7 +77,7 @@ button_delete_tasks.pack()
 button_edit_tasks = tkinter.Button(root, text="Edit task", width=78, command=lambda:edit_tasks())
 button_edit_tasks.pack()
 
-button_load_task = tkinter.Button(root, text="Load task", width=48, command=lambda: load_task())
+button_load_task = tkinter.Button(root, text="Load task", width=78, command=lambda: load_task())
 button_load_task.pack()
 
 button_exit_root = tkinter.Button(root, text="Exit root", width=78, command=lambda:exit_root())
