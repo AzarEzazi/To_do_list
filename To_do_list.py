@@ -12,6 +12,9 @@ def add_tasks():
     task = entry_tasks.get()
     if task != "":
        listbox_tasks.insert(tkinter.END, task)
+       with open("test.txt","a") as file:
+           file.write(task+"\n")
+
        entry_tasks.delete(0, tkinter.END)
     else:
         tkinter.messagebox.showinfo("warning!", "please enter  the task")
